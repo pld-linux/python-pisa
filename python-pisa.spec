@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/spirito-pisa/%{module}-%{version}.tar.gz
 URL:		http://pisa.spirito.de/index.html
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-html5lib
+BuildRequires:	sed
 %pyrequires_eq	python
 Requires:	python-html5lib
 Requires:	python-PIL
@@ -32,7 +33,9 @@ python setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
 
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_examplesdir}/%{name}-%{version}}
+install -d $RPM_BUILD_ROOT%{_bindir}
+install pisa.py $RPM_BUILD_ROOT%{_bindir}
+sed -i 's@/usr/local/bin/python.*$@/usr/bin/python@' $RPM_BUILD_ROOT%{_bindir}/pisa.py
 
 %py_postclean $RPM_BUILD_ROOT%{py_sitescriptdir}
 
@@ -42,5 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.txt README.txt
+%attr(755,root,root) %{_bindir}/pisa.py
 %{py_sitescriptdir}/%{module}-%{version}-py*.egg-info
 %{py_sitescriptdir}/sx
