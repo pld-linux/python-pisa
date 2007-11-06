@@ -18,6 +18,7 @@ BuildRequires:	sed >= 4.0
 Requires:	python-html5lib
 Requires:	python-PIL
 Requires:	python-ReportLab >= 2.1
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,7 +32,6 @@ ReportLab.
 %setup -q -n %{module}-%{version}
 
 %build
-CFLAGS="%{rpmcflags}"; export CFLAGS
 python setup.py build
 
 %install
