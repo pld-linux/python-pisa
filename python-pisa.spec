@@ -1,5 +1,6 @@
 %define		module	pisa
-Summary:	HTML/XML/CSS to PDF converter using the reportlab toolkit
+Summary:	HTML/XML/CSS to PDF converter using the ReportLab toolkit
+Summary(pl.UTF-8):	Konwerter formatów HTML/XML/CSS do PDF korzystający z narzędzi ReportLab
 Name:		python-%{module}
 Version:	3.0.10
 Release:	1
@@ -8,9 +9,11 @@ Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/spirito-pisa/%{module}-%{version}.tar.gz
 # Source0-md5:	4c29768070f3a0f3a2f86a35f9ab22d7
 URL:		http://pisa.spirito.de/index.html
-BuildRequires:	python-devel >= 1:2.4
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-html5lib
-BuildRequires:	sed
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sed >= 4.0
 %pyrequires_eq	python
 Requires:	python-html5lib
 Requires:	python-PIL
@@ -18,7 +21,11 @@ Requires:	python-ReportLab >= 2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-HTML/XML/CSS to PDF converter using the reportlab toolkit
+HTML/XML/CSS to PDF converter using the ReportLab toolkit.
+
+%description -l pl.UTF-8
+Konwerter formatów HTML/XML/CSS do PDF korzystający z narzędzi
+ReportLab.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -37,7 +44,7 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 install pisa.py $RPM_BUILD_ROOT%{_bindir}
 sed -i 's@/usr/local/bin/python.*$@/usr/bin/python@' $RPM_BUILD_ROOT%{_bindir}/pisa.py
 
-%py_postclean $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
