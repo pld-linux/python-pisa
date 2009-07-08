@@ -2,12 +2,12 @@
 Summary:	HTML/XML/CSS to PDF converter using the ReportLab toolkit
 Summary(pl.UTF-8):	Konwerter formatów HTML/XML/CSS do PDF korzystający z narzędzi ReportLab
 Name:		python-%{module}
-Version:	3.0.10
+Version:	3.0.32
 Release:	1
 License:	QPL
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/spirito-pisa/%{module}-%{version}.tar.gz
-# Source0-md5:	4c29768070f3a0f3a2f86a35f9ab22d7
+Source0:	http://pypi.python.org/packages/source/p/pisa/%{module}-%{version}.tar.gz
+# Source0-md5:	d68f2f76e04b10f73c07ef4df937b243
 URL:		http://pisa.spirito.de/index.html
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-html5lib
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.txt README.txt
+%attr(755,root,root) %{_bindir}/pisa
 %attr(755,root,root) %{_bindir}/pisa.py
+%attr(755,root,root) %{_bindir}/xhtml2pdf
 %{py_sitescriptdir}/%{module}-%{version}-py*.egg-info
+%{py_sitescriptdir}/ho
 %{py_sitescriptdir}/sx
