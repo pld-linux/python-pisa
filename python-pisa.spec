@@ -8,7 +8,7 @@ License:	QPL
 Group:		Libraries/Python
 Source0:	http://pypi.python.org/packages/source/p/pisa/%{module}-%{version}.tar.gz
 # Source0-md5:	d68f2f76e04b10f73c07ef4df937b243
-URL:		http://pisa.spirito.de/index.html
+URL:		http://www.xhtml2pdf.com/
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-html5lib
 BuildRequires:	rpm-pythonprov
