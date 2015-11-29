@@ -12,7 +12,7 @@ URL:		http://www.xhtml2pdf.com/
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-html5lib
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	sed >= 4.0
 %pyrequires_eq	python
 Requires:	python-html5lib
