@@ -3,7 +3,7 @@ Summary:	HTML/XML/CSS to PDF converter using the ReportLab toolkit
 Summary(pl.UTF-8):	Konwerter formatów HTML/XML/CSS do PDF korzystający z narzędzi ReportLab
 Name:		python-%{module}
 Version:	3.0.33
-Release:	3
+Release:	4
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	http://pypi.python.org/packages/source/p/pisa/%{module}-%{version}.tar.gz
@@ -14,10 +14,12 @@ BuildRequires:	python-html5lib
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	sed >= 4.0
-%pyrequires_eq	python
-Requires:	python-html5lib
+Requires:	python
 Requires:	python-PIL
+Requires:	python-ReportLab < 3.0
 Requires:	python-ReportLab >= 2.2
+Requires:	python-html5lib
+Requires:	python-pyPdf
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,8 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 install -d $RPM_BUILD_ROOT%{_bindir}
-install pisa.py $RPM_BUILD_ROOT%{_bindir}
-sed -i 's@/usr/local/bin/python.*$@/usr/bin/python@' $RPM_BUILD_ROOT%{_bindir}/pisa.py
+cp -p pisa.py $RPM_BUILD_ROOT%{_bindir}
+sed -i 's@%{_prefix}/local/bin/python.*$@%{_bindir}/python@' $RPM_BUILD_ROOT%{_bindir}/pisa.py
 
 %py_postclean
 
